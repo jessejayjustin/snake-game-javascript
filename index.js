@@ -2,15 +2,15 @@ const cvs = document.getElementById('canvas');
 const ctx = cvs.getContext('2d');
 
 let background = new Image();
-background.src = 'img/original.png';
+background.src = 'img/ground.png';
 
 
 let coin = new Image();
-coin.src = 'img/bitcoin3.png';
+coin.src = 'img/Bananas-32.png';
 
 
 let bitcoin = new Image();
-bitcoin.src = 'img/bitcoin2.png';
+bitcoin.src = 'img/Bananas-64.png';
 
 
 let dead = new Audio();
@@ -33,8 +33,8 @@ let snakeX = snake[0].x;
 let snakeY = snake[0].y;
 
 let food = {
-	x: Math.floor(Math.random() * 19) * box,
-	y: Math.floor(Math.random() * 17+2) * box
+	x: Math.floor(Math.random() * 17 + 1) * box,
+	y: Math.floor(Math.random() * 15 + 3) * box
 }
 
 let score = 0;
@@ -65,21 +65,21 @@ function draw(){
 
     for(let i=0; i < snake.length; i++){
 
-      ctx.fillStyle = (i == 0) ? 'maroon' : 'gold';
+      ctx.fillStyle = (i == 0) ? 'black' : 'yellow';
       ctx.fillRect(snake[i].x,snake[i].y,box,box);
 
     }
 
-    ctx.drawImage(bitcoin,15,14);
+    ctx.drawImage(bitcoin,1,5);
     ctx.drawImage(coin,food.x,food.y);
 
-    ctx.fillStyle = 'yellow';
-    ctx.font = '45px Changa One';
-    ctx.fillText(score,2*box,1.6*box);
+    ctx.fillStyle = 'pink';
+    ctx.font = '40px Changa One';
+    ctx.fillText(score,2.3*box,1.6*box);
 
     ctx.fillStyle = 'yellow';
     ctx.font = '30px Changa One';
-    ctx.fillText(title,4*box,1.6*box);
+    ctx.fillText(title,4*box,1.5*box);
 
     if(d == "LEFT") snakeX -= box;
 	if(d == "RIGHT") snakeX +=box;
@@ -106,8 +106,8 @@ function draw(){
 
 		score++
 		food = {
-		x: Math.floor(Math.random() * 19) * box,
-		y: Math.floor(Math.random() * 17+2) * box
+		x: Math.floor(Math.random() * 17 + 1) * box,
+		y: Math.floor(Math.random() * 15 + 3) * box
 	    }
 	    eat.play();
 
@@ -126,7 +126,7 @@ function draw(){
         }
     }
 
-    if(newHead.x < 1 - box || newHead.x > 18 * box || newHead.y < 2*box || newHead.y > 18*box || collision(newHead, snake)) {
+    if(newHead.x < + box || newHead.x > 17 * box || newHead.y < 3*box || newHead.y > 17*box || collision(newHead, snake)) {
     	dead.play();
     	clearInterval(game,100);
     	setTimeout(reload,300);
